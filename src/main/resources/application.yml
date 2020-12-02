@@ -1,0 +1,8 @@
+spring:
+  # Enable the h2 browser console
+  h2.console.enabled: true
+  datasource:
+    # Database configuration
+    url: ${DB_URL:jdbc:h2:mem:testdb}
+    username: ${DB_USERNAME:}
+    password: ${DB_PASSWORD:}
