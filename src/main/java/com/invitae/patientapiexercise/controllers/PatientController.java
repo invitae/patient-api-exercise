@@ -32,7 +32,7 @@ public class PatientController {
      * Get a page of patients.
      *
      * @param pageNumber the desired page number, starting with 0
-     * @param size       the desired page size
+     * @param pageSize   the desired page size
      * @return the page of patients
      */
     @ApiOperation(value = "Get a page of patients.")
@@ -40,10 +40,10 @@ public class PatientController {
     public Page<Patient> getPatients(
             @ApiParam(value = "Page number, starting with 0") @RequestParam(defaultValue = "0") @Min(0) int pageNumber,
             @ApiParam(value = "Page size, maximum of 100") @RequestParam(defaultValue = "10")
-            @Range(min = 0, max = 100) int size) {
+            @Range(min = 0, max = 100) int pageSize) {
 
-        log.info("Received GET /patients request with pageNumber={}, size={}", pageNumber, size);
+        log.info("Received GET /patients request with pageNumber={}, size={}", pageNumber, pageSize);
 
-        return patientRepository.findAll(PageRequest.of(pageNumber, size));
+        return patientRepository.findAll(PageRequest.of(pageNumber, pageSize));
     }
 }
